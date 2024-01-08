@@ -58,9 +58,9 @@ ROOT_URLCONF = 'APPARTE.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates'), os.path.join(BASE_DIR, 'Model/templates'),
-                 os.path.join(BASE_DIR, 'Vitrine/templates'), os.path.join(BASE_DIR, 'Employer/templates'),
-                 os.path.join(BASE_DIR, 'vendeur/templates')]
+        'DIRS': [BASE_DIR / '../templates', BASE_DIR / '../Model/templates', BASE_DIR / '../Vitrine/templates',
+                 BASE_DIR / '../Employer/templates', BASE_DIR / '../vendeur/templates',BASE_DIR / '../Admin/templates']
+
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -84,7 +84,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'enAparte',
         'USER': 'postgres',
-        'PASSWORD': '09102079Darius',
+        'PASSWORD': 'delmas',
         'HOST': 'localhost',
         'PORT': '5432',
     }
