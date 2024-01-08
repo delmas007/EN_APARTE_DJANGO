@@ -6,26 +6,18 @@
         </button>
 
         <a class="navbar-brand" href="{% url 'vitrine:Accueil'%}">
-            <strong><img class="img-fluid" src="{% static 'image/aparte_logo.png' %}" width="50%" height="5px" alt="aparte_logo.png"></strong>
+            <strong><img class="img-fluid mr-auto" src="{% static 'image/aparte_logo.png' %}" width="30%" height="5px" alt="aparte_logo.png" style="margin-left: 60px;"></strong>
         </a>
 
-        <div class="d-lg-none" style="margin-left:15px">
+        <div class="row d-lg-none" style="margin-left:15px">
 
 
             {% if user.is_authenticated %}
                 {% for panier in user.paniers_set.all %}
                     {% if not panier.confirmation_panier %}
-                        <a href="{% url 'vitrine:panier_confirme' %}" class="bi-cart custom-icon me-3" style="font-size:30px; margin-right:20px; "></a>
+                    <a href="{% url 'vitrine:panier_confirme' %}" class="bi-cart4 custom-icon me-3" style="font-size:30px; margin-right:20px; padding-bottom: 28px"></a>
                     {% endif %}
                 {% endfor %}
-            {% endif %}
-
-            {% if not user.is_authenticated %}
-                <a href="{% url 'Model:connexion'%}" class="bi-person custom-icon me-3"  style="font-size:30px; margin-right:20px; "></a>
-            {% endif %}
-
-            {% if user.is_authenticated %}
-                <a href="{% url 'Model:Deconnexion'%}" class="bi-power custom-icon me-3"  style="font-size:30px; margin-right:20px; "></a>
             {% endif %}
         </div>
 
@@ -58,6 +50,25 @@
                     <a class="nav-link {% if request.path == vitrine_Contact_url %}active{% endif %}" href="{{ vitrine_Contact_url }}">Contact</a>
 
                 </li>
+                <li class="nav-item">
+                    {% if not user.is_authenticated %}
+                         <a href="{% url 'Model:connexion'%}" class="bi-person custom-icon ms-3"  style="font-size:30px; margin-right:20px; "></a>
+                         <a href="{% url 'Model:inscription'%}" class=" custom-icon me-3"  style="font-size:20px; "><img width="25" height="25" src="https://img.icons8.com/ios/50/737373/inscription.png" alt="inscription"/></a>
+                   {% endif %}
+                </li>
+            
+                <li class="nav-item">
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'Model:Deconnexion'%}" class="bi-power custom-icon me-3"  style="font-size:30px; margin-right:20px; "></a>
+                {% endif %}
+
+                </li>
+                
+           
+
+            {% if user.is_authenticated %}
+                <a href="{% url 'Model:Deconnexion'%}" class="bi-power custom-icon me-3"  style="font-size:30px; margin-right:20px; "></a>
+            {% endif %}
 
             </ul>
 
