@@ -18,3 +18,8 @@ sqlparse==0.4.2
 tornado==6.2
 typing_extensions==4.8.0
 tzdata==2022.1
+
+django-wkhtmltopdf~=3.4.0
+reportlab~=4.0.8
+xhtml2pdf~=0.2.13
+barcode~=1.0.4

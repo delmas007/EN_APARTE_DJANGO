@@ -59,8 +59,9 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates'), os.path.join(BASE_DIR, 'Model/templates'),
-                 os.path.join(BASE_DIR, 'Vitrine/templates'), os.path.join(BASE_DIR, 'Employer/templates'),
-                 os.path.join(BASE_DIR, 'vendeur/templates')]
+                 os.path.join(BASE_DIR, 'Vitrine/templates'),
+                 os.path.join(BASE_DIR, 'vendeur/templates'), BASE_DIR / 'Employer/templates'
+                 ]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -73,6 +74,7 @@ TEMPLATES = [
         },
     },
 ]
+wkhtmltopdf_cmd = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
 
 WSGI_APPLICATION = 'APPARTE.wsgi.application'
 

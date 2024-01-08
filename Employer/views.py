@@ -1,18 +1,16 @@
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.handlers.wsgi import WSGIRequest
 from django.core.mail import send_mail, EmailMultiAlternatives
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
-from django.template.loader import render_to_string
+from django.template.loader import render_to_string, get_template
 from django.utils.html import strip_tags
-
 from Employer.forms import ConfirmationReservationForm
-from Model.models import Rendez_vous, Produit
-from django.conf import settings
-
+from Model.models import Rendez_vous
 from Model.views import evaluation_email
+from xhtml2pdf import pisa
 
 
-# noinspection PyPackageRequirements
 @login_required
 def reservations_confirmer(request):
     if not request.user.roles or request.user.roles.role != 'EMPLOYER':
@@ -52,13 +50,21 @@ def debut_rendez_vous(request, rendez_vous_id):
 @login_required
 def fin_rendez_vous(request, rendez_vous_id, email, uuid):
     rdv = get_object_or_404(Rendez_vous, id=rendez_vous_id)
-
-    # Mettre à jour le champ 'fin' à True
     rdv.fin = True
     rdv.save()
-    evaluation_email(request, mail=email, rendez_vous_uuid=uuid)
 
-    return redirect('employer:reservation_confirmer')
+    evaluation_email(request, mail=email, rendez_vous_uuid=uuid)
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = f'attachment; filename="facture_rendez_vous_{rdv.id}.pdf"'
+
+    template_path = 'facture_template.html'
+    template = get_template(template_path)
+    html = template.render({'rendez_vous': rdv})
+    pisa_status = pisa.CreatePDF(html, dest=response)
+    if pisa_status.err:
+        return HttpResponse('Erreur lors de la génération du PDF', status=500)
+
+    return response
 
 
 @login_required
