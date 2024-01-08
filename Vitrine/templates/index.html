@@ -182,7 +182,7 @@
 
                                         <div class="col-lg-5 col-12">
                                             <div class="d-flex flex-column h-100 ms-lg-4 mt-lg-0 mt-5">
-                                                <h4 class="mb-3">Qu'est-ce qui peut vous aider ?</h4>
+                                                <h4 class="mb-3"><span> Qu'est-ce qui peut vous aider ?</span></h4>
 
                                                 <div class="skill-thumb mt-3">
 
@@ -286,16 +286,16 @@
                                             </div>
                                             {% if produit.promotion and produit.prix_reduit %}
                                                 <small class="product-price text-muted ms-auto">
-                                                    <span class="h6 text-warning" style="text-decoration:none ">{{ produit.prix_reduit }}F</span><br>
+                                                    <span class="h6" style="text-decoration:none ">{{ produit.prix_reduit }}F</span><br>
                                                     <span class="product-price-original">{{ produit.prix }}F </span>
                                                 </small>
                                             {% elif  produit.promotion and not produit.prix_reduit  %}
                                                 <small class="product-price text-muted ms-auto">
-                                                    <span class="h6 text-warning" style="text-decoration:none ">{{ produit.prix }}F</span><br>
+                                                    <span class="h6" style="text-decoration:none ">{{ produit.prix }}F</span><br>
                                                 </small>
                                             {% elif not produit.promotion  %}
                                                 <small class="product-price text-muted ms-auto">
-                                                    <span class="h6 text-warning" style="text-decoration:none ">{{ produit.prix }}F</span><br>
+                                                    <span class="h6" style="text-decoration:none ">{{ produit.prix }}F</span><br>
                                                 </small>
                                             {% endif %}
                                         </div>
