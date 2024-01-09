@@ -80,7 +80,9 @@
                                                     </ul>
                                                 </td>
                                                 <td>{{ paniers_traitement.montant_total }}</td>
-                                                <td>{{ paniers_traitement.get_statut_display }}</td>
+                                                <td>
+                                                    <span class="badge badge-success">{{ paniers_traitement.get_statut_display }}</span>
+                                                </td>
                                                 <td>
                                                     {% if not paniers_traitement.reception_commande %}
                                                         <form method="post" action="{% url 'vendeur:confirmer_statut_traitements' paniers_traitement.id %}">

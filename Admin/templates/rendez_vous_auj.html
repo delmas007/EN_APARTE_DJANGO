@@ -68,7 +68,12 @@
                                               </td><td>
                                               <form method="post" action="{% url 'admins:supprimer_rendez_vous_aujourdhui' rendez_vous.id %}">
                                                   {% csrf_token %}
-                                                  <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+
+                                                  <a class="btn btn-danger btn-sm">
+                                                      <i class="fas fa-trash">
+                                                      </i>
+                                                      <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+                                                  </a>
                                               </form>
                                           </td>
 

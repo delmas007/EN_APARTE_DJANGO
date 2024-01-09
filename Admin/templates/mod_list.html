@@ -67,7 +67,11 @@
                                                   <td>{{ service.description }}</td>
                                                   <td>{{ service.prix }}</td>
                                                   <td>
-                                                      <a href="{% url 'admins:modifier_service' service.id %}" class="btn btn-primary">Modifier</a>
+                                                      <a class="btn btn-info btn-sm" href="{% url 'admins:modifier_service' service.id %}">
+                                                          <i class="fas fa-pencil-alt">
+                                                          </i>
+                                                          Modifier
+                                                      </a>
                                                   </td>
                                               </tr>
                                           {% endfor %}

@@ -105,7 +105,11 @@
                                                   <td>{{ rendez_vous.client.nom }} {{ rendez_vous.client.prenom }}</td>
                                                   <td>{{ rendez_vous.employer.nom }} {{ rendez_vous.employer.prenom }}</td>
                                                   <td>
-                                                      <a href="{% url 'admins:afficher_evalu' rendez_vous.id %}" class="btn btn-primary">Plus information</a>
+                                                      <a class="btn btn-primary btn-sm" href="{% url 'admins:afficher_evalu' rendez_vous.id %}">
+                                                          <i class="fas fa-folder">
+                                                          </i>
+                                                          Plus information
+                                                      </a>
                                                   </td>
                                               </tr>
                                           {% endfor %}

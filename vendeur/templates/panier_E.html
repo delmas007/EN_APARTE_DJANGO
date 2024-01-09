@@ -80,7 +80,9 @@
                                                     </ul>
                                                 </td>
                                                 <td>{{ commandes_receptionnee.montant_total }}</td>
-                                                <td>{{ commandes_receptionnee.get_statut_display }}</td>
+                                                <td>
+                                                    <span class="badge badge-primary">{{ commandes_receptionnee.get_statut_display }}</span>
+                                                </td>
                                                 <td>{{ commandes_receptionnee.date_reception_commande }}</td>
                                             </tr>
                                         {% endfor %}

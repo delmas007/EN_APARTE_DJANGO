@@ -81,12 +81,17 @@
                                                   <td>{% if produit.promotion == True  %}{{ produit.pourcentage_promotion }}{% endif %}
                                                       {% if produit.promotion == False  %}0{% endif %}</td>
                                                   <td>
-                                                      <a href="{% url 'vendeur:modifier_produit' produit.id %}" class="btn btn-primary">Modifier</a>
+                                                      <a class="btn btn-info btn-sm" href="{% url 'vendeur:modifier_produit' produit.id %}">
+                                                          <i class="fas fa-pencil-alt">
+                                                          </i>
+                                                          Modifier
+                                                      </a>
                                                   </td>
                                                   <td>
                                                       <form method="post" action="{% url 'vendeur:supprimer_produit' produit.id %}">
                                                           {% csrf_token %}
-                                                          <button type="submit" class="btn btn-danger">Supprimer</button>
+                                                              <button type="submit" class="btn btn-danger btn-sm"> <i class="fas fa-trash text-white">
+                                                              </i>Supprimer</button>
                                                       </form>
                                                   </td>
                                                   </tr>
