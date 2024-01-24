@@ -56,7 +56,6 @@ def fin_rendez_vous(request, rendez_vous_id, email, uuid):
     evaluation_email(request, mail=email, rendez_vous_uuid=uuid)
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = f'attachment; filename="facture_rendez_vous_{rdv.id}.pdf"'
-
     template_path = 'facture_template.html'
     template = get_template(template_path)
     html = template.render({'rendez_vous': rdv})
