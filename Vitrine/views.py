@@ -92,10 +92,13 @@ def commander_produit(request):
 def Accueil(request):
     tous_les_produits = Produit.objects.all()
 
-    # Vérifier que la taille de la population est suffisante pour l'échantillon
-    if len(tous_les_produits) >= 3:
-        # Sélectionner trois éléments aléatoires
-        produits_aleatoires = sample(list(tous_les_produits), 3)
+    if tous_les_produits:
+        if len(tous_les_produits) >= 3:
+            # Sélectionner trois éléments aléatoires
+            produits_aleatoires = sample(list(tous_les_produits), 3)
+        else:
+            # Si la taille de la population est insuffisante, utilisez tous les produits disponibles
+            produits_aleatoires = tous_les_produits
     else:
         # Si la taille de la population est insuffisante, utilisez tous les produits disponibles
         produits_aleatoires = tous_les_produits
